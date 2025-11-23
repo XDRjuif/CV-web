@@ -1,0 +1,111 @@
+/*p { color:#0fead4; }
+    @media (min-width: 576px) {
+        p { color: #21bbd2; }
+    }
+p { color:#e26e41; }
+    @media (min-width: 768px) {
+        p { color: #21bbd2; }
+    }
+p { color:#311f95; }
+    @media (min-width: 992px) {
+        p { color: #21bbd2; }
+    } */
+.citation_trop_swag {
+    font-style: italic;
+    text-align: center;
+    color: purple;
+}
+.bloc-identite {
+    display: flex;
+    align-items: center;     
+    justify-content: center; 
+    gap: 20px;              
+    margin-top: 20px;
+}
+
+.logos img {
+    margin: 0 160px;   
+}
+/* tablette */
+@media (max-width: 768px) {
+    .logos img {
+        margin: 0 40px;   
+    }
+}
+
+/* téléphone */
+@media (max-width: 450px) {
+    .logos img {
+        margin: 0 20px;  
+    }
+}
+
+.photo {
+    max-width: 25%;
+    height: auto;
+    border-radius: 10px;     /* optionnel */
+}
+
+.texte-identite {
+    max-width: 50%;
+}
+
+.texte-identite p,
+.texte-identite strong {
+    display: block;
+    text-align: left;
+}
+
+
+
+
+
+
+.conteneur {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+    background-color:rgb(255, 255, 255);
+}
+.boite  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+    background-color:rgb(255, 255, 255);
+}
+.boite1 {background-color: lightgreen;}
+.boite2 {background-color: lightgoldenrodyellow;}
+
+
+
+.colorprimary {
+    color: #0fead4; 
+}
+
+h2 {
+    color:aquamarine;
+    background-color: rgb(184, 79, 79);
+    padding: 20px;
+    border 2px solid black;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-color: blue;
+    border: top 1cm;
+}
+
+a { 
+    color: #0fead4; 
+    text-decoration: none; 
+}
+
+a:hover {
+    text-decoration: underline dashed purple;
+    color:chocolate;
+}
