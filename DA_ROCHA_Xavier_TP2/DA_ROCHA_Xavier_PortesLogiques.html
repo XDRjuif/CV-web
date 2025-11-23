@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Démonstration du fonctionnement des Portes Logiques </title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f7;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 29px;
+        }
+
+        h2 {
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .image {
+            display: block;
+            margin: 15px auto; 
+            max-width: 150px; 
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            background-color: white;
+        }
+        .endroitQuisouvre {
+            background: rgb(255, 255, 255);
+            padding: 20px;
+            margin: 20px 0;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .contenu.porte {
+            display: none;
+        }
+        
+        .inputs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .résult {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            background: #e9e9ef;
+        }
+        
+        label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Simulation de Portes Logiques</h1>
+
+    <div class="endroitQuisouvre">
+        <h2 onclick="ouverture('EtInclisif')">Porte ET (AND)</h2>
+        <div id="EtInclisif" class="contenu porte">
+            <p>La porte "ET" ("AND" en anglais) produit une sortie de 1 (Vrai) uniquement si les deux entrées, A ET B, sont à 1. Dans tous les autres cas, la sortie est 0 (Faux).</p>
+            <img src="PORTE_ET.png" alt="Symbole de la Porte AND" class="image">
+            <div class="inputs">
+                <label>A <input type="checkbox" id="andA" /></label>
+                <label>B <input type="checkbox" id="andB" /></label>
+            </div>
+            <div class="résult" id="et_result">Résultat : 0</div>
+        </div>
+    </div>
+
+    <div class="endroitQuisouvre">
+        <h2 onclick="ouverture('ouinclusif')">Porte OU (OR)</h2>
+        <div id="ouinclusif" class="contenu porte">
+            <p>La porte "OU" ("OR" en anglais) produit une sortie de 1 (Vrai) si l'une des entrées, A OU B, ou les deux sont à 1. La sortie est 0 uniquement si les deux entrées sont à 0.</p>
+            <img src="PORTE_OU.png" alt="Symbole de la Porte OR" class="image">
+            <div class="inputs">
+                <label>A <input type="checkbox" id="orA" /></label>
+                <label>B <input type="checkbox" id="orB" /></label>
+            </div>
+            <div class="résult" id="ou_Résult">Résultat : 0</div>
+        </div>
+    </div>
+
+    <div class="endroitQuisouvre">
+        <h2 onclick="ouverture('Exclusifou')">Porte XOR</h2>
+        <div id="Exclusifou" class="contenu porte">
+            <p>La porte "OU Exclusif" ("XOR" en anglais) produit une sortie de 1 (Vrai) si les entrées sont différentes (A=1 et B=0, ou A=0 et B=1). La sortie est 0 si les deux entrées sont identiques.</p>
+            <img src="PORTE_OU_Exclusif.png" alt="Symbole de la Porte XOR" class="image">
+            <div class="inputs">
+                <label>A <input type="checkbox" id="xorA" /></label>
+                <label>B <input type="checkbox" id="xorB" /></label>
+            </div>
+            <div class="résult" id="ou_exclu_résult">Résultat : 0</div>
+        </div>
+    </div>
+
+    <script>
+        function ouverture(id) {
+            const block = document.getElementById(id);
+            block.style.display = (block.style.display === "block") ? "none" : "block";
+        }
+
+        function explicationet(){
+            const A = document.getElementById("andA").checked ?1 : 0;
+            const B = document.getElementById("andB").checked ? 1 : 0;
+            document.getElementById("et_result").textContent = "Résultat : " + (A & B);
+        }
+        function explicationou() {
+            const A = document.getElementById("orA").checked ? 1 : 0;
+            const B = document.getElementById("orB").checked ? 1 : 0;
+            document.getElementById("ou_Résult").textContent = "Résultat : " + (A|B);
+        }
+        function explicationouExclu() {
+            const A = document.getElementById("xorA").checked ? 1 :0;
+            const B = document.getElementById("xorB").checked ? 1 :0;
+            document.getElementById("ou_exclu_résult").textContent = "Résultat : " + (A ^B);
+        }
+
+        document.querySelectorAll("#EtInclisif input").forEach(i => i.addEventListener("change", explicationet));
+        document.querySelectorAll("#ouinclusif input").forEach(i => i.addEventListener("change", explicationou));
+        document.querySelectorAll("#Exclusifou input").forEach(i => i.addEventListener("change", explicationouExclu));
+    </script>
+</body>
+</html>
